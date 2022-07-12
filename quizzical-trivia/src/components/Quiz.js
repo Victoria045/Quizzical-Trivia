@@ -1,22 +1,3 @@
-
-// import Quiz from "./Quiz";
-
-// export default function QuizComponent(props) {
-  
-//   return (
-//     <>
-//       {props.quizzlettData.map(quiz => (
-//         <Quiz
-//           key={props.quiz.question}
-//           quiz={props.quiz}
-//           handleCheckAnswers={props.handleCheckAnswers}
-//           done={props.done}
-//         />
-//       ))}
-//     </>
-//   )
-// } 
-
 import React from "react";
 
 export default function Quiz(props) {

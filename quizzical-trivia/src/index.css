@@ -35,3 +35,60 @@ main button {
   font-size: 0.95rem;
   margin-top: 1em;
 }
+
+.correct {
+  background-color: blue;
+}
+
+.answer--container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+.answer {
+  padding: 5px 20px;
+  color: #293264;
+  border: 0.794239px solid #4d5b9e;
+  border-radius: 15px;
+  background-color: transparent;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+.divider {
+  margin-top: 20px;
+  border: 0.794239px solid #dbdef0;
+}
+.check--answers {
+  background-color: #4d5b9e;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  width: 165px;
+  height: 50px;
+  color: #f5f7fb;
+  font-size: 14px;
+  border: none;
+  border-radius: 15px;
+  margin-top: 20px;
+  cursor: pointer;
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 600px;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+  color: #293264;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0 25%;
+}
