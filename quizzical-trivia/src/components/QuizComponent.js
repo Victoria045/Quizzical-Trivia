@@ -1,71 +1,133 @@
+import React, { useState,useEffect } from "react";
+import ShowResults from "./ShowResults";
+import Quiz from "./Quiz";
 
-// import Quiz from "./Quiz";
+export default function QuizComponent() {
 
-// export default function QuizComponent(props) {
-  
-//   return (
-//     <>
-//       {props.quizzlettData.map(quiz => (
-//         <Quiz
-//           key={props.quiz.question}
-//           quiz={props.quiz}
-//           handleCheckAnswers={props.handleCheckAnswers}
-//           done={props.done}
-//         />
-//       ))}
-//     </>
-//   )
-// } 
+const [quizzlettData, setquizzlettData] = useState([]);
+const [attempts, setAttempts] = useState(0);
+const [rendered, setRendered] = useState(false);
+const [done, setDone] = useState(false);
+const [results, setResults] = useState(0);
 
-import React from "react";
+useEffect(() => {
+  const apiUrl = "https://opentdb.com/api.php?amount=10"
+  fetch(apiUrl)
+      .then(res => res.json())
+      .then(data => quizzes(data.results))
+}, [attempts])
 
-export default function Quiz(props) {
-  const [ quiz, done ] = props
+console.log(quizzlettData)
 
-  function buttonStyle(answer) {
-    const border = {
-      border: answer === quiz.selectedAnswer ? "none" : "0.794239px solid #4D5B9E",
-    };
+function quizzes(quizElements) {
+  setquizzlettData(
+    quizElements.map(quizItem => ({
+      question: parseHTML(quizItem.question),
+      answers: getAllAnswers(quizItem.correct_answer, quizItem.incorrect_answers),
+      correctAnswer: quizItem.correct_answer,
+      selectedAnswer: " "
+    }))
+  );
+  setRendered(true);
+}
 
-    if (!done) {
-      return {
-        backgroundColor : quiz.selectedAnswer === answer ? "#D6DBF5" : "#F5F7FB",
-        ...border,
-      };
-    } else {
-      if (answer === quiz.selectedAnswer) {
-        return {
-          backgroundColor: "#94D7A2",
-          border: "none",
-        };
-      } else if (answer === quiz.correctAnswer) {
-        return {
-          backgroundColor: "#F8BCBC",
-          border: "none",
-        };
-    } else {
-      return {
-        backgroundColor: "#F5F7FB",
-        border: "0.794239px solid #4D5B9E",
-      };
+function getAllAnswers(correct, incorrect) {
+  const allAnswers = []
+  const randAns = Math.floor(Math.random() * (incorrect.length + 1))
+  let j = 0;
+  for (let i = 0; i < incorrect.length + 1; i++) {
+    if (i === randAns) {
+      allAnswers.push(parseHTML(correct));
+    }
+    else {
+      allAnswers.push(parseHTML(incorrect[j]))
+      j++;
     }
   }
+  return allAnswers;
 }
-  return(
-    <>
-      <div>{quiz.question}</div>
-      <div>
-        {quiz.answers.map((ans) => (
-            <button
-              key={ans}
-              className="answer"
-              style={buttonStyle(ans)}
-              onClick={() => props.handleCheckAnswers(quiz.question, ans)}
-            >
-              {ans}
-            </button>
-          ))}
+
+function parseHTML(data) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(data, "text/html");
+  return doc.documentElement.textContent;
+}
+
+function handleClickedAnswer(question, answer) {
+  setquizzlettData(prevQuizzletData => prevQuizzletData.map(
+    quiz => quiz.question === question ? {
+      ...quiz, selectedAnswer: answer
+    } :
+    quiz
+    ));
+}
+
+function handleCheckAnswers() {
+  let correct = 0;
+  let completed = true;
+  quizzlettData.forEach(quiz => {
+    if (!quiz.selectedAnswer) {
+      completed = false;
+    }
+    if (quiz.selectedAnswer === quiz.correctAnswer) {
+      correct ++
+    }
+  });
+  setResults(correct);
+  setDone(prevDone => {
+    if (completed && !prevDone) {
+      return true;
+    }
+  });
+}
+
+function handleStartOver() {
+  setquizzlettData([]);
+  setDone(false);
+  if (!isNaN(attempts)) {
+    setAttempts(prevAttempts => prevAttempts + 1)
+  }
+  setRendered(false)
+}
+
+// const quizze = quizzlettData?.map(quiz => {
+//     return <div>
+//       <h3>{quiz.question}</h3>
+//       <div>
+//         {quiz.answers.map(answer => {
+//           return <button type='button'>{answer}</button>
+//         })}
+//         <hr />
+//       </div>
+//     </div>
+//   })
+
+  const quizze = quizzlettData?.map(quiz => {
+    return <Quiz 
+              key={quiz.question}
+              quiz={quiz}
+              handleClickedAnswer={handleClickedAnswer}
+              done={done}
+            />
+  })
+
+  return (
+    <div>
+      <div className="quiz-container">
+        {quizze}
       </div>
-    </> 
+      {done && (
+        <ShowResults
+          results={results}
+          totalAnswers={10}
+          handleStartOver={handleStartOver}
+        />
+      )}
+      {rendered && !done && (
+        <button className="check--answers" onClick={handleCheckAnswers}>
+          Check answers
+        </button>
+      )}
+    </div>
   )
 }

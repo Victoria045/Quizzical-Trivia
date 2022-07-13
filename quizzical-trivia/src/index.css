@@ -36,6 +36,23 @@ main button {
   margin-top: 1em;
 }
 
+.quiz-container {
+  padding: 2em 0 0;
+}
+.quiz-container hr {
+  margin:1.5em 8em 0;
+  border: 1px solid #DBDEF0;
+  opacity: 0.5;
+}
+.quiz {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 19px;
+  color: #293264;
+  padding-bottom: 0.5em;
+}
 .correct {
   background-color: blue;
 }
@@ -49,12 +66,13 @@ main button {
   padding: 5px 20px;
   color: #293264;
   border: 0.794239px solid #4d5b9e;
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: transparent;
   font-family: "Inter", sans-serif;
   font-size: 12px;
   font-weight: bold;
   margin-top: 3px;
+  margin-right: 10px;
   cursor: pointer;
 }
 
@@ -66,17 +84,18 @@ main button {
   background-color: #4d5b9e;
   font-family: "Inter", sans-serif;
   font-weight: bold;
-  width: 165px;
-  height: 50px;
+  /* width: 165px;
+  height: 50px; */
+  padding: 1em 2em;
   color: #f5f7fb;
   font-size: 14px;
   border: none;
   border-radius: 15px;
-  margin-top: 20px;
   cursor: pointer;
-  margin-top: 0;
+  margin-top: 2em;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 2em;
 }
 
 .results {

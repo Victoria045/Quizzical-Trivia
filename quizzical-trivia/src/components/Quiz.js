@@ -1,8 +1,6 @@
 import React from "react";
 
-export default function Quiz(props) {
-  const [ quiz, done ] = props
-
+export default function Quiz({quiz, done, handleClickedAnswer}) {
   function buttonStyle(answer) {
     const border = {
       border: answer === quiz.selectedAnswer ? "none" : "0.794239px solid #4D5B9E",
@@ -22,6 +20,7 @@ export default function Quiz(props) {
       } else if (answer === quiz.correctAnswer) {
         return {
           backgroundColor: "#F8BCBC",
+          color: "#4D5B9E",
           border: "none",
         };
     } else {
@@ -33,20 +32,21 @@ export default function Quiz(props) {
   }
 }
   return(
-    <>
-      <div>{quiz.question}</div>
+    <div className="quiz-container">
+      <div className="quiz">{quiz.question}</div>
       <div>
         {quiz.answers.map((ans) => (
             <button
               key={ans}
               className="answer"
               style={buttonStyle(ans)}
-              onClick={() => props.handleCheckAnswers(quiz.question, ans)}
+              onClick={() => handleClickedAnswer(quiz.question, ans)}
             >
               {ans}
             </button>
           ))}
       </div>
-    </> 
+      <hr />
+    </div> 
   )
 }
