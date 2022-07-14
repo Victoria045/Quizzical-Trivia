@@ -4,12 +4,10 @@ body {
   background-image: url("./assets/blob5.png");
   background-repeat: no-repeat;
   background-position-x: right;
-  /* background-image: url("./assets/blob6.png"); */
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */
+}
+.blue-blob {
+  position:fixed;
+  bottom:0px;
 }
 
 main {
@@ -20,10 +18,15 @@ main {
   margin-top: 220px;
   color: #293264;
 }
-
+main h1 {
+  font-size: 2.5rem;
+  font-family: 'Karla', sans-serif;
+}
 main p {
   margin-top: 0;
-  font-size: 1.05rem;
+  /* font-size: 1.05rem; */
+  font-size: 1.1rem;
+  font-family: 'Inter', sans-serif;
 }
 
 main button {
@@ -32,7 +35,8 @@ main button {
   border-radius: 15px;
   padding: 1em 4em;
   color: #F5F7FB;
-  font-size: 0.95rem;
+  /* font-size: 0.95rem; */
+  font-size: 1.1rem;
   margin-top: 1em;
 }
 
@@ -84,8 +88,6 @@ main button {
   background-color: #4d5b9e;
   font-family: "Inter", sans-serif;
   font-weight: bold;
-  /* width: 165px;
-  height: 50px; */
   padding: 1em 2em;
   color: #f5f7fb;
   font-size: 14px;
