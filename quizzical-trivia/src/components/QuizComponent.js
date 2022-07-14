@@ -17,7 +17,7 @@ useEffect(() => {
       .then(data => quizzes(data.results))
 }, [attempts])
 
-console.log(quizzlettData)
+// console.log(quizzlettData)
 
 function quizzes(quizElements) {
   setquizzlettData(
