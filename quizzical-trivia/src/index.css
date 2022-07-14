@@ -38,6 +38,7 @@ main button {
   /* font-size: 0.95rem; */
   font-size: 1.1rem;
   margin-top: 1em;
+  font-family: 'Inter', sans-serif;
 }
 
 .quiz-container {
@@ -56,6 +57,7 @@ main button {
   line-height: 19px;
   color: #293264;
   padding-bottom: 0.5em;
+  font-family: 'Karla', sans-serif;
 }
 .correct {
   background-color: blue;
@@ -73,7 +75,7 @@ main button {
   border-radius: 10px;
   background-color: transparent;
   font-family: "Inter", sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: bold;
   margin-top: 3px;
   margin-right: 10px;

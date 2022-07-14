@@ -15,6 +15,7 @@ export default function Quiz({quiz, done, handleClickedAnswer}) {
       if (answer === quiz.selectedAnswer) {
         return {
           backgroundColor: "#94D7A2",
+          color: "#4D5B9E",
           border: "none",
         };
       } else if (answer === quiz.correctAnswer) {
@@ -27,6 +28,7 @@ export default function Quiz({quiz, done, handleClickedAnswer}) {
       return {
         backgroundColor: "#F5F7FB",
         border: "0.794239px solid #4D5B9E",
+        color: "#4D5B9E",
       };
     }
   }
