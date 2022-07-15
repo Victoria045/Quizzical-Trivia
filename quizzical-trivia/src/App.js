@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       {mainPage && <main>
          <h1>Quizzical</h1>
-         <p>Let's attempt fun questions!</p>
+         <p>Let's attempt some fun questions!</p>
          <button onClick={() => setMainPage(false)}>Start quiz</button>
       </main>}
       {!mainPage && <QuizComponent />}

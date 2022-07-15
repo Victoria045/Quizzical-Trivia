@@ -36,7 +36,7 @@ export default function Quiz({quiz, done, handleClickedAnswer}) {
   return(
     <div className="quiz-container">
       <div className="quiz">{quiz.question}</div>
-      <div>
+      <div className="answer-container">
         {quiz.answers.map((ans) => (
             <button
               key={ans}

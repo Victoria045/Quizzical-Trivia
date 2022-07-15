@@ -11,7 +11,7 @@ const [done, setDone] = useState(false);
 const [results, setResults] = useState(0);
 
 useEffect(() => {
-  const apiUrl = "https://opentdb.com/api.php?amount=10"
+  const apiUrl = "https://opentdb.com/api.php?amount=5"
   fetch(apiUrl)
       .then(res => res.json())
       .then(data => quizzes(data.results))
@@ -119,7 +119,7 @@ function handleStartOver() {
       {done && (
         <ShowResults
           results={results}
-          totalAnswers={10}
+          totalAnswers={5}
           handleStartOver={handleStartOver}
         />
       )}
