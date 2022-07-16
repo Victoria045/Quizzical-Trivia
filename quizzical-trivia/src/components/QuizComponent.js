@@ -17,7 +17,6 @@ useEffect(() => {
       .then(data => quizzes(data.results))
 }, [attempts])
 
-// console.log(quizzlettData)
 
 function quizzes(quizElements) {
   setquizzlettData(
@@ -90,17 +89,6 @@ function handleStartOver() {
   setRendered(false)
 }
 
-// const quizze = quizzlettData?.map(quiz => {
-//     return <div>
-//       <h3>{quiz.question}</h3>
-//       <div>
-//         {quiz.answers.map(answer => {
-//           return <button type='button'>{answer}</button>
-//         })}
-//         <hr />
-//       </div>
-//     </div>
-//   })
 
   const quizze = quizzlettData?.map(quiz => {
     return <Quiz 
