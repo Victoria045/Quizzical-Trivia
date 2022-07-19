@@ -1,5 +1,8 @@
 # Quizzical-Trivia
  Trivia app built in react that pull questions from the database and upon submitting answers you get the scores.
+ 
+# Screenshot
+![Screenshot from 2022-07-19 09-17-14](https://user-images.githubusercontent.com/50333645/179679261-e5f43d35-4c72-447a-a247-68507f9e0f9e.png)
 
 #### Prerequisites 
 * react 18.2.0
